@@ -1,0 +1,496 @@
+/* =========================================================
+   INK_FOCASSO — Stylesheet
+   Sections:
+   1. Tokens
+   2. Reset
+   3. Typography
+   4. Layout helpers
+   5. Header / nav
+   6. Hero
+   7. Hatch divider (signature element)
+   8. About
+   9. Portfolio / gallery / lightbox
+   10. CTA band + footer
+   11. Booking page
+   12. Aftercare page
+   13. Buttons
+   14. Responsive
+   ========================================================= */
+
+/* 1. Tokens ------------------------------------------------ */
+:root {
+  --ink: #0b0b0a;        /* near-black, warm */
+  --ink-soft: #171614;
+  --paper: #efece4;      /* warm paper white */
+  --paper-dim: #e4e0d4;
+  --graphite: #565550;   /* secondary text / lines */
+  --hairline: #c9c5ba;   /* light borders on paper */
+  --blood: #7a1f1f;      /* sparing accent: warnings, non-refundable, CTAs */
+  --blood-soft: #a4453f;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --wrap-width: 1080px;
+}
+
+/* 2. Reset --------------------------------------------------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }
+ul, ol { padding: 0; margin: 0; list-style: none; }
+button { font: inherit; cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--blood);
+  outline-offset: 3px;
+}
+
+/* 3. Typography ------------------------------------------------ */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4em;
+}
+h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.02; }
+h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+p { margin: 0 0 1em; color: var(--graphite); }
+.hero p, .hero h1 { color: inherit; }
+
+.eyebrow, .label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+
+code {
+  font-family: var(--font-mono);
+  background: var(--paper-dim);
+  padding: 0.1em 0.4em;
+  font-size: 0.9em;
+}
+
+/* 4. Layout helpers --------------------------------------------- */
+.wrap {
+  max-width: var(--wrap-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 5. Header / nav ------------------------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--paper);
+  border-bottom: 1px solid var(--hairline);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.logotype {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+#logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.navbar-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+.logo-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.nav-menu {
+  display: flex;
+  gap: 32px;
+}
+.nav-menu a {
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+.nav-menu a:hover,
+.nav-menu a[aria-current="page"] {
+  border-bottom-color: var(--blood);
+}
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--ink);
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+/* 6. Hero --------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 78vh;
+  display: flex;
+  align-items: flex-end;
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  /* Updated with your "focasso portfolio.PNG" image */
+  background: url("../media/focasso portfolio.PNG") center/cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11,11,10,0) 30%, rgba(11,11,10,0.9) 100%);
+}
+
+.hero-content {
+  position: relative;
+  padding-bottom: 72px;
+  padding-top: 140px;
+}
+.hero h1 {
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: italic;
+}
+.hero .eyebrow { color: #c9c5ba; }
+.hero-sub {
+  max-width: 46ch;
+  color: #d8d5cc;
+  font-size: 1.05rem;
+}
+
+/* 7. Hatch divider — signature element ----------------------------
+   Cross-hatch pattern, referencing the shading technique used in
+   black and white realism tattooing. Used as a section divider
+   throughout the site, always in the graphite tone. */
+.hatch-divider {
+  height: 40px;
+  background-image:
+    repeating-linear-gradient(45deg, var(--graphite) 0, var(--graphite) 1px, transparent 1px, transparent 9px),
+    repeating-linear-gradient(-45deg, var(--graphite) 0, var(--graphite) 1px, transparent 1px, transparent 9px);
+  opacity: 0.28;
+}
+
+/* 8. About --------------------------------------------------------- */
+.about { padding: 120px 24px; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr 400px;
+  gap: 48px;
+  align-items: start;
+}
+.about-photo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid var(--hairline);
+}
+.about-copy p { max-width: 62ch; font-size: 1.05rem; }
+.socials {
+  display: flex;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-top: 24px;
+}
+.socials a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  white-space: nowrap;
+}
+/* 9. Portfolio / gallery / lightbox --------------------------------- */
+.portfolio { padding: 88px 24px; }
+.section-note { max-width: 60ch; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 32px;
+}
+.gallery-empty {
+  grid-column: 1 / -1;
+  border: 1px dashed var(--hairline);
+  padding: 40px;
+  text-align: center;
+}
+.gallery-item {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--ink);
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.gallery-item img,
+.gallery-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.gallery-item:hover img,
+.gallery-item:hover video { transform: scale(1.04); }
+.gallery-item .badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--paper);
+  background: rgba(11,11,10,0.7);
+  padding: 2px 6px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(11,11,10,0.94);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.lightbox[hidden] { display: none; }
+.lightbox-content img,
+.lightbox-content video {
+  max-height: 86vh;
+  max-width: 90vw;
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background: none;
+  border: none;
+  color: var(--paper);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* 10. CTA band + footer --------------------------------------------- */
+.cta-band {
+  padding: 88px 24px;
+  text-align: center;
+}
+.cta-band p { max-width: 46ch; margin-left: auto; margin-right: auto; }
+
+.site-footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 48px 24px;
+}
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.site-footer .logotype { color: var(--paper); }
+.site-footer .label-mono { color: #a8a49a; }
+.footer-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.footer-links a {
+  display: inline-flex;
+  color: var(--paper);
+}
+.footer-links a:hover { color: var(--blood-soft); }
+
+/* 11. Booking page ---------------------------------------------------- */
+.page-header { padding: 64px 24px 32px; }
+.page-header p:last-child { max-width: 58ch; }
+
+.rules { padding: 24px 24px 64px; }
+.checklist { display: flex; flex-direction: column; gap: 16px; max-width: 68ch; }
+.checklist li {
+  border: 1px solid var(--hairline);
+  padding: 16px 18px;
+}
+.checklist label {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.checklist input[type="checkbox"] {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blood);
+  flex-shrink: 0;
+}
+.checklist span { font-size: 0.98rem; }
+.checklist-status {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-top: 20px;
+}
+.checklist-status.is-complete { color: var(--blood); }
+
+.prep { padding: 24px 24px 64px; }
+.prep-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+}
+.prep-item {
+  background: var(--paper);
+  padding: 22px 12px;
+  text-align: center;
+}
+
+.dm-flow { padding: 24px 24px 96px; }
+.dm-steps { display: flex; flex-direction: column; gap: 10px; margin: 24px 0 32px; max-width: 60ch; counter-reset: step; }
+.dm-steps li {
+  counter-increment: step;
+  padding-left: 32px;
+  position: relative;
+}
+.dm-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  font-family: var(--font-mono);
+  color: var(--blood);
+}
+
+.template-box {
+  border: 1px solid var(--hairline);
+  padding: 24px;
+  max-width: 60ch;
+  margin-bottom: 32px;
+}
+.template-box pre {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  white-space: pre-wrap;
+  background: var(--paper-dim);
+  padding: 16px;
+  margin: 12px 0 16px;
+}
+.template-actions { display: flex; align-items: center; gap: 16px; }
+.copy-status { font-family: var(--font-mono); font-size: 0.8rem; color: var(--blood); }
+
+/* 12. Aftercare page ---------------------------------------------------- */
+.aftercare { padding: 24px 24px 96px; }
+.aftercare-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 62ch;
+}
+.aftercare-steps li { border-left: 2px solid var(--blood); padding-left: 20px; }
+.aftercare-note { margin-top: 40px; font-family: var(--font-mono); font-size: 0.9rem; }
+.aftercare-note a { border-bottom: 1px solid var(--ink); text-decoration: none; }
+
+/* 13. Buttons ------------------------------------------------------------ */
+.btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 26px;
+  border: 1px solid currentColor;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.hero .btn-primary {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+.btn-primary:hover { background: var(--blood); border-color: var(--blood); color: var(--paper); }
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-secondary:hover { background: var(--ink); color: var(--paper); }
+.btn[aria-disabled="true"] {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* 14. Responsive ------------------------------------------------------------ */
+@media (max-width: 780px) {
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  .about-photo img { aspect-ratio: 16 / 10; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .prep-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 620px) {
+  .nav-toggle { display: block; }
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--hairline);
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 24px 16px;
+  }
+  .nav-menu.is-open { display: flex; }
+  .nav-menu li { padding: 12px 0; border-bottom: 1px solid var(--hairline); }
+  .nav-menu li:last-child { border-bottom: none; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+}

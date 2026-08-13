@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking — Ink_focasso</title>
+<meta name="description" content="How to book a tattoo with Ink_focasso. Rules, prep, and the DM template.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logotype" href="index.html">Ink_focasso</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+      <span>Menu</span>
+    </button>
+    <nav>
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="booking.html" aria-current="page">Booking</a></li>
+        <li><a href="aftercare.html">Aftercare</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="page-header wrap">
+  <p class="label-mono">Booking</p>
+  <h1>How to book</h1>
+  <p>Read this whole page before sending a DM. It keeps things moving fast for both of us.</p>
+</main>
+
+<section class="rules wrap" id="rules">
+  <h2>Before you book</h2>
+  <ul class="checklist" id="rules-checklist">
+    <li>
+      <label>
+        <input type="checkbox" data-rule>
+        <span>You're 18 or older. A valid ID is checked in person.</span>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="checkbox" data-rule>
+        <span>A $30 deposit holds your slot. It is non-refundable.</span>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="checkbox" data-rule>
+        <span>Cancelling or rescheduling needs 48 hours notice. Less than that, and the appointment is cancelled.</span>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="checkbox" data-rule>
+        <span>You can bring one guest. No firearms or weapons in the studio.</span>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="checkbox" data-rule>
+        <span>Eat a real meal and drink water before your appointment.</span>
+      </label>
+    </li>
+  </ul>
+  <p class="checklist-status" id="checklist-status">Check every box to unlock the booking link below.</p>
+</section>
+
+<div class="hatch-divider" aria-hidden="true"></div>
+
+<section class="prep wrap">
+  <h2>What to bring</h2>
+  <div class="prep-grid">
+    <div class="prep-item"><p class="label-mono">Snacks</p></div>
+    <div class="prep-item"><p class="label-mono">Water</p></div>
+    <div class="prep-item"><p class="label-mono">Charger</p></div>
+    <div class="prep-item"><p class="label-mono">Sweater</p></div>
+    <div class="prep-item"><p class="label-mono">Headphones</p></div>
+  </div>
+</section>
+
+<div class="hatch-divider" aria-hidden="true"></div>
+
+<section class="dm-flow wrap" id="dm-flow">
+  <h2>Send the DM</h2>
+  <p>Booking happens through Instagram DMs, not this site. Message <strong>@ink_focasso</strong> with these four things and you'll get a faster answer:</p>
+  <ol class="dm-steps">
+    <li><strong>Placement.</strong> Where on your body.</li>
+    <li><strong>Size.</strong> Roughly how much space, in inches or something like half sleeve or full sleeve.</li>
+    <li><strong>Design.</strong> Your idea and any reference images.</li>
+    <li><strong>Timing.</strong> Ask what days are open, or if there's a squeeze-in slot.</li>
+  </ol>
+
+  <div class="template-box">
+    <p class="label-mono">Copy this into your DM</p>
+    <pre id="dm-template">Hey! I'd like to book a tattoo.
+Placement: 
+Size: 
+Design idea / reference: 
+Days you're available: </pre>
+    <div class="template-actions">
+      <button class="btn btn-secondary" id="copy-template">Copy template</button>
+      <span class="copy-status" id="copy-status" aria-live="polite"></span>
+    </div>
+  </div>
+
+  <a class="btn btn-primary" id="dm-button" href="https://instagram.com/ink_focasso" target="_blank" rel="noopener">
+    Open Instagram to DM
+  </a>
+</section>
+
+<footer id="contact" class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="logotype">Ink Focasso</p>
+      <p class="label-mono">Black &amp; white realism</p>
+    </div>
+    <div class="footer-links">
+  <a href="https://instagram.com/focasso_hq" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4.2"/>
+      <circle cx="17.2" cy="6.8" r="1"/>
+    </svg>
+  </a>
+  <a href="https://tiktok.com/@fobandzz" target="_blank" rel="noopener" aria-label="TikTok">
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+      <path d="M14.5 3c.3 2.1 1.7 3.6 3.9 3.9v2.6c-1.3 0-2.6-.4-3.6-1.1v6.1c0 3-2.4 5.5-5.4 5.5S3.9 17.5 3.9 14.5c0-2.8 2.1-5.1 4.8-5.4v2.7c-1.2.3-2.1 1.4-2.1 2.7 0 1.6 1.3 2.8 2.8 2.8s2.8-1.3 2.8-2.8V3h2.3z"/>
+    </svg>
+  </a>
+</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
