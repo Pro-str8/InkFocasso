@@ -2,10 +2,11 @@
    INK_FOCASSO — Site behavior
    Sections:
    1. Mobile nav toggle
-   2. Gallery render + lightbox   (runs only on index.html)
-   3. Booking checklist gate      (runs only on booking.html)
-   4. Copy booking template       (runs only on booking.html)
-   ========================================================= */
+   2. Toast proximity message (runs only on index.html)
+   3. Gallery render + lightbox   (runs only on index.html)
+   4. Booking checklist gate      (runs only on booking.html)
+   5. Copy booking template       (runs only on booking.html)
+  ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -20,7 +21,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /* 2. Gallery render + lightbox -------------------------------- */
+/* 2. Toast proximity message --------------------------------- */
+const toast = document.getElementById("proximity-toast");
+const toastClose = document.getElementById("toast-close");
+
+if (toast) {
+  setTimeout(function () {
+    toast.classList.add("is-visible");
+  }, 1200);
+}
+if (toastClose) {
+  toastClose.addEventListener("click", function () {
+    toast.classList.remove("is-visible");
+  });
+}
+
+  /* 3. Gallery render + lightbox -------------------------------- */
   const galleryEl = document.getElementById("gallery");
 
   if (galleryEl && typeof galleryItems !== "undefined" && galleryItems.length > 0) {
@@ -105,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "Escape") closeLightbox();
   });
 
-  /* 3. Booking checklist gate -------------------------------------- */
+  /* 4. Booking checklist gate -------------------------------------- */
   const ruleInputs = document.querySelectorAll("[data-rule]");
   const checklistStatus = document.getElementById("checklist-status");
   const dmButton = document.getElementById("dm-button");
@@ -144,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /* 4. Copy booking template ----------------------------------------- */
+  /* 5. Copy booking template ----------------------------------------- */
   const copyButton = document.getElementById("copy-template");
   const templateEl = document.getElementById("dm-template");
   const copyStatus = document.getElementById("copy-status");
@@ -168,5 +184,4 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 3000);
     });
   }
-
 });

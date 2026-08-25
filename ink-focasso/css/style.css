@@ -21,23 +21,27 @@
 :root {
   --ink: #0b0b0a;        /* near-black, warm */
   --ink-soft: #171614;
-  --paper: #efece4;      /* warm paper white */
-  --paper-dim: #e4e0d4;
-  --graphite: #565550;   /* secondary text / lines */
+  --paper: #ecd8c7;      /* warm paper white */
+  --paper-dim: #eef5e7;
+  --graphite: #000000;   /* secondary text / lines */
   --hairline: #c9c5ba;   /* light borders on paper */
-  --blood: #7a1f1f;      /* sparing accent: warnings, non-refundable, CTAs */
+  --blood: #ff2e2e;      /* sparing accent: warnings, non-refundable, CTAs */
   --blood-soft: #a4453f;
 
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Inter", -apple-system, sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-mono: "IBM Plex Mono", monospace;  
 
   --wrap-width: 1080px;
 }
 
 /* 2. Reset --------------------------------------------------- */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
 body {
   margin: 0;
   background: var(--paper);
@@ -45,6 +49,8 @@ body {
   font-family: var(--font-body);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
 }
 img, video { max-width: 100%; display: block; }
 a { color: inherit; }
@@ -101,7 +107,7 @@ code {
   top: 0;
   z-index: 40;
   background: var(--paper);
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: none;
 }
 .header-inner {
   display: flex;
@@ -165,10 +171,9 @@ code {
   display: flex;
   align-items: flex-end;
   background: var(--ink);
-  color: var(--paper);
+  color: #ffffff;
   overflow: hidden;
 }
-
 .hero-media {
   position: absolute;
   inset: 0;
@@ -214,16 +219,15 @@ code {
 /* 8. About --------------------------------------------------------- */
 .about { padding: 120px 24px; }
 .about-grid {
-  display: grid;
-  grid-template-columns: 160px 1fr 400px;
-  gap: 48px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 .about-photo img {
   width: 100%;
   height: auto;
   object-fit: contain;
-  border: 1px solid var(--hairline);
+  max-width: 500px;
 }
 .about-copy p { max-width: 62ch; font-size: 1.05rem; }
 .socials {
@@ -377,7 +381,7 @@ code {
 .prep { padding: 24px 24px 64px; }
 .prep-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--hairline);
   border: 1px solid var(--hairline);
@@ -465,8 +469,42 @@ code {
   opacity: 0.35;
   pointer-events: none;
 }
+/* 14. Toast message ------------------------------------------------------- */
+.proximity-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 14px 18px;
+  max-width: 340px;
+  border: 1px solid var(--blood);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  transform: translateY(120%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.proximity-toast.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.proximity-toast p { margin: 0; color: var(--paper); }
+.proximity-toast strong { color: var(--blood-soft); }
+.toast-close {
+  background: none;
+  border: none;
+  color: var(--paper);
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
 
-/* 14. Responsive ------------------------------------------------------------ */
+/* 15. Responsive ------------------------------------------------------------ */
 @media (max-width: 780px) {
   .about-grid { grid-template-columns: 1fr; gap: 24px; }
   .about-photo img { aspect-ratio: 16 / 10; }
@@ -475,6 +513,13 @@ code {
   .footer-grid { flex-direction: column; align-items: flex-start; }
 }
 
+@media (max-width: 620px) {
+  .proximity-toast {
+    right: 16px;
+    left: 16px;
+    max-width: none;
+  }
+}
 @media (max-width: 620px) {
   .nav-toggle { display: block; }
   .nav-menu {
