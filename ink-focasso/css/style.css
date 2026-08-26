@@ -21,7 +21,7 @@
 :root {
   --ink: #0b0b0a;        /* near-black, warm */
   --ink-soft: #171614;
-  --paper: #ecd8c7;      /* warm paper white */
+  --paper: #ecd8c7;      /* warm paper red */
   --paper-dim: #eef5e7;
   --graphite: #000000;   /* secondary text / lines */
   --hairline: #c9c5ba;   /* light borders on paper */
@@ -103,8 +103,10 @@ code {
 
 /* 5. Header / nav ------------------------------------------------ */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 40;
   background: var(--paper);
   border-bottom: none;
@@ -114,6 +116,7 @@ code {
   align-items: center;
   justify-content: space-between;
   height: 72px;
+  padding-right: 0;
 }
 .logotype {
   font-family: var(--font-display);
@@ -157,28 +160,60 @@ code {
 }
 .nav-toggle {
   display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
   background: none;
-  border: 1px solid var(--ink);
-  padding: 8px 14px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  border: none;
+  padding: 0;
+  font-size: 0;
+  color: transparent;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  margin-left: auto;
+}
+.nav-toggle::before,
+.nav-toggle::after,
+.nav-toggle span {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-toggle::before { top: 15px; }
+.nav-toggle span { top: 21px; }
+.nav-toggle::after { top: 27px; }
+
+.nav-toggle[aria-expanded="true"]::before {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"]::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+.nav-toggle[aria-expanded="true"] span {
+  opacity: 0;
 }
 
 /* 6. Hero --------------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: 78vh;
+  min-height: 80vh;
   display: flex;
   align-items: flex-end;
   background: var(--ink);
   color: #ffffff;
   overflow: hidden;
+  padding-top: 96px;
 }
 .hero-media {
   position: absolute;
   inset: 0;
   /* Updated with your "focasso portfolio.PNG" image */
-  background: url("../media/focasso portfolio.PNG") center/cover no-repeat;
+  background: url("../media/focasso portfolio.PNG") center 27% /cover no-repeat;
 }
 
 .hero-overlay {
