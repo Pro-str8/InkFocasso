@@ -116,7 +116,7 @@ code {
   align-items: center;
   justify-content: space-between;
   height: 72px;
-  padding-right: 0;
+  padding-right: 24px;
 }
 .logotype {
   font-family: var(--font-display);
@@ -383,7 +383,9 @@ code {
 .footer-links a:hover { color: var(--blood-soft); }
 
 /* 11. Booking page ---------------------------------------------------- */
-.page-header { padding: 64px 24px 32px; }
+.page-header {
+  padding: 96px 24px 32px;
+}
 .page-header p:last-child { max-width: 58ch; }
 
 .rules { padding: 24px 24px 64px; }
@@ -460,7 +462,9 @@ code {
 .copy-status { font-family: var(--font-mono); font-size: 0.8rem; color: var(--blood); }
 
 /* 12. Aftercare page ---------------------------------------------------- */
-.aftercare { padding: 24px 24px 96px; }
+.page-header {
+  padding: 96px 24px 32px;
+}
 .aftercare-steps {
   display: flex;
   flex-direction: column;
